@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>跳一跳刷分</title>
+        <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css"  type="text/css"  rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="col-sm-6 col-md-6 ">
+                    <h3>
+                        微信跳一跳小程序刷分页面
+                    </h3>
+                    <form class="form-horizontal" action="/score" method="post">
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">SessionId</label>
+                            <div class="controls">
+                                <input  id="session" name="session" type="text" class="form-control"  />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="inputPassword">分数</label>
+                            <div class="controls">
+                                <input id="score" name="score" class="form-control" type="password" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <a class="btn btn-success" onclick="score()">刷分</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            function score(){
+                $.ajax({
+                    url:"/score",
+                    type:"post",
+                    data:{
+                        "session":$("#session").val(),
+                        "score":$("#score").val()
+                    },
+                    success:r=>{
+                        if(r!="y"){
+                            alert(r);
+                        }else{
+                            alert("么么哒，刷分成功啦");
+                        }
+                        window.location.href="";
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>
