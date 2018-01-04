@@ -15,3 +15,4 @@
  go build
  ./go-jump1jump -p [端口号]
 ```
+访问：http://127.0.0.1:端口号
